@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { format, parseISO } from 'date-fns'
 import { cn } from '@/lib/utils'
 import { useStore, checkViolation } from '@/store'
@@ -133,9 +133,9 @@ export function TimetableGrid() {
         </thead>
         <tbody>
           {groupedPeople.map((group, groupIndex) => (
-            <>
+            <React.Fragment key={`group-${groupIndex}`}>
               {settings.groupByDepartment && group.department && (
-                <tr key={`dept-${groupIndex}`} className="bg-muted/50">
+                <tr className="bg-muted/50">
                   <td
                     colSpan={dates.length + 1}
                     className="px-4 py-2 font-semibold text-sm border-b"
@@ -145,7 +145,7 @@ export function TimetableGrid() {
                 </tr>
               )}
               {settings.groupByDepartment && !group.department && group.people.length > 0 && (
-                <tr key={`dept-none-${groupIndex}`} className="bg-muted/50">
+                <tr className="bg-muted/50">
                   <td
                     colSpan={dates.length + 1}
                     className="px-4 py-2 font-semibold text-sm text-muted-foreground border-b"
@@ -196,7 +196,7 @@ export function TimetableGrid() {
                   })}
                 </tr>
               ))}
-            </>
+            </React.Fragment>
           ))}
         </tbody>
       </table>
