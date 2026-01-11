@@ -4,11 +4,13 @@ import { DepartmentManager } from '@/components/DepartmentManager'
 import { TimetableManager } from '@/components/TimetableManager'
 import { ExportImport } from '@/components/ExportImport'
 import { Toolbar } from '@/components/Toolbar'
+import { WelcomeDialog } from '@/components/WelcomeDialog'
 import { CalendarDays } from 'lucide-react'
 
 function App() {
   return (
     <div className="min-h-screen bg-background">
+      <WelcomeDialog />
       {/* Header */}
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4">
